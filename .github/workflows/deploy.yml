@@ -1,0 +1,58 @@
+name: Deploy API
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        options: [staging, production]
+        required: true
+  push:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: deploy-${{ github.event.inputs.environment || 'staging' }}
+  cancel-in-progress: false
+jobs:
+  deploy:
+    if: github.event_name == 'workflow_dispatch' || vars.ANVAYA_STAGING_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment || 'staging' }}
+    env:
+      TARGET_ENV: ${{ github.event.inputs.environment || 'staging' }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      D1_DATABASE_ID: ${{ vars.D1_DATABASE_ID }}
+      R2_BUCKET_NAME: ${{ vars.R2_BUCKET_NAME }}
+      EVENTS_QUEUE_NAME: ${{ vars.EVENTS_QUEUE_NAME }}
+      DLQ_NAME: ${{ vars.DLQ_NAME }}
+      ADMIN_PUBLIC_ORIGIN: ${{ vars.ADMIN_PUBLIC_ORIGIN }}
+      API_HOSTNAME: ${{ vars.API_HOSTNAME }}
+      APPLE_BUNDLE_ID: ${{ vars.APPLE_BUNDLE_ID }}
+      BACKUP_PASSPHRASE: ${{ secrets.BACKUP_PASSPHRASE }}
+      XDG_CONFIG_HOME: /tmp/anvaya-config
+      WRANGLER_LOG_PATH: /tmp/anvaya-deploy.log
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
+      - run: npm run check && npm run test:integration
+      - run: node infrastructure/scripts/render-wrangler.mjs "$TARGET_ENV"
+      - name: Backup before migration
+        run: |
+          test -n "$BACKUP_PASSPHRASE"
+          npx wrangler d1 export "anvaya-$TARGET_ENV" --remote --config ".wrangler/deploy.$TARGET_ENV.json" --output "/tmp/anvaya-$TARGET_ENV-before.sql"
+          printf '%s' "$BACKUP_PASSPHRASE" | gpg --batch --pinentry-mode loopback --passphrase-fd 0 --symmetric --cipher-algo AES256 --output "/tmp/anvaya-$TARGET_ENV-before.sql.gpg" "/tmp/anvaya-$TARGET_ENV-before.sql"
+          rm "/tmp/anvaya-$TARGET_ENV-before.sql"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pre-migration-${{ env.TARGET_ENV }}-${{ github.run_id }}
+          path: /tmp/anvaya-${{ env.TARGET_ENV }}-before.sql.gpg
+          retention-days: 1
+      - name: Apply additive migrations and deploy
+        run: |
+          npx wrangler d1 migrations apply "anvaya-$TARGET_ENV" --remote --config ".wrangler/deploy.$TARGET_ENV.json"
+          npx wrangler deploy --config ".wrangler/deploy.$TARGET_ENV.json"
+      - name: Health check
+        run: curl --fail --retry 3 "https://$API_HOSTNAME/health"
