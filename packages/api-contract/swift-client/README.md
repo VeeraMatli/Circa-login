@@ -1,0 +1,2 @@
+On macOS with Swift 6: `cd packages/api-contract/swift-client && swift build`.
+The official Apple build plugin reads the symlinked canonical OpenAPI JSON (valid YAML), generates types/client, and compiles against URLSession transport. This optional workflow is unrun in the current Linux environment and not integrated into the app target. Review generator compatibility and resolve dependencies before adopting it.

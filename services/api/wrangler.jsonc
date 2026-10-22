@@ -1,0 +1,56 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "anvaya-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "vars": {
+    "LOCAL_MODE": "true",
+    "APPLE_BUNDLE_ID": "com.anvaya.dating",
+    "ADMIN_ORIGIN": "http://localhost:3000",
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "anvaya-local",
+      "database_id": "00000000-0000-0000-0000-000000000001",
+      "migrations_dir": "migrations",
+    },
+  ],
+  "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "anvaya-local-media" }],
+  "durable_objects": {
+    "bindings": [{ "name": "CHAT", "class_name": "ChatRoom" }],
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["ChatRoom"] }],
+  "queues": {
+    "producers": [{ "binding": "EVENTS", "queue": "anvaya-events" }],
+    "consumers": [
+      {
+        "queue": "anvaya-events",
+        "max_batch_size": 10,
+        "max_retries": 3,
+        "dead_letter_queue": "anvaya-dead-letter",
+      },
+    ],
+  },
+  "triggers": { "crons": ["*/15 * * * *"] },
+  "env": {
+    "staging": {
+      "name": "anvaya-api-staging",
+      "vars": {
+        "LOCAL_MODE": "false",
+        "APPLE_BUNDLE_ID": "com.anvaya.dating.staging",
+        "ADMIN_ORIGIN": "https://admin-staging.example.invalid",
+      },
+    },
+    "production": {
+      "name": "anvaya-api-production",
+      "vars": {
+        "LOCAL_MODE": "false",
+        "APPLE_BUNDLE_ID": "com.anvaya.dating",
+        "ADMIN_ORIGIN": "https://admin.example.invalid",
+      },
+    },
+  },
+}

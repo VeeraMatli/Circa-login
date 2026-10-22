@@ -1,0 +1,7 @@
+# Performance validation plan (not executed)
+
+Test separately with 100, 1,000, 10,000 and 100,000 synthetic registered users in an isolated staging account. Never seed real production. Include profile/photo states, reciprocal preferences, sparse cities, blocks, bans and conversations. Registered users are not concurrent users; model 30% MAU, 5% DAU and 1–5% of DAU simultaneously online, then burst at 5× to expose rate limits.
+
+For each population: measure signup/OTP provider stub load independently; authenticated discovery including sparse eligibility; concurrent directed likes/canonical match uniqueness; message write + two-peer WebSocket fan-out; pagination/reconnect/history; blocked/deleted invalidation; photo queue/processor latency; purchase webhook replay against an isolated verified fixture harness. Capture p50/p95/p99, error categories, D1 rows read/written, storage, CPU, queue backlog, socket reconnects and billable usage. Preserve current-run artifacts and exact commit/config.
+
+Suggested provisional goals: discovery p95 <500 ms, message persistence p95 <300 ms and no duplicate matches/messages or overdrafts. They are acceptance hypotheses, not observed results. Use realistic indexed query plans and pagination. Test single-city hotspots, cross-region delay, delayed queues, provider outage, transaction contention and failures between each side effect. Do not infer production capacity from localhost or health requests. Global recommendation ranking and DB failover need separate tests before large populations.

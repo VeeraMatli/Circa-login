@@ -1,0 +1,25 @@
+{
+  "name": "@anvaya/admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1 --port 3000",
+    "build": "next build",
+    "typecheck": "next typegen && tsc --noEmit",
+    "build:cloudflare": "XDG_CONFIG_HOME=/tmp/anvaya-config WRANGLER_LOG_PATH=/tmp/anvaya-admin-wrangler.log opennextjs-cloudflare build"
+  },
+  "dependencies": {
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwindcss": "^4.1.0",
+    "@tailwindcss/postcss": "^4.1.0",
+    "@radix-ui/react-dialog": "^1.1.0",
+    "lucide-react": "^0.468.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@opennextjs/cloudflare": "^1.15.0"
+  }
+}

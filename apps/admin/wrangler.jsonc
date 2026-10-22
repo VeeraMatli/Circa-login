@@ -1,0 +1,32 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "anvaya-admin",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
+  "vars": {
+    "API_BASE_URL": "https://api.example.invalid",
+    "ANVAYA_LOCAL_ADMIN": "false",
+    "ADMIN_PUBLIC_ORIGIN": "https://admin.example.invalid",
+  },
+  "env": {
+    "staging": {
+      "name": "anvaya-admin-staging",
+      "vars": {
+        "API_BASE_URL": "https://api-staging.example.invalid",
+        "ANVAYA_LOCAL_ADMIN": "false",
+        "ADMIN_PUBLIC_ORIGIN": "https://admin-staging.example.invalid",
+      },
+    },
+    "production": {
+      "name": "anvaya-admin-production",
+      "vars": {
+        "API_BASE_URL": "https://api.example.invalid",
+        "ANVAYA_LOCAL_ADMIN": "false",
+        "ADMIN_PUBLIC_ORIGIN": "https://admin.example.invalid",
+      },
+    },
+  },
+}

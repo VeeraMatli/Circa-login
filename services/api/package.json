@@ -1,0 +1,22 @@
+{
+  "name": "@anvaya/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "XDG_CONFIG_HOME=/tmp/anvaya-config WRANGLER_LOG_PATH=/tmp/anvaya-wrangler.log WRANGLER_SEND_METRICS=false wrangler dev --local --ip 127.0.0.1 --port 8787",
+    "typecheck": "tsc --noEmit",
+    "build": "XDG_CONFIG_HOME=/tmp/anvaya-config WRANGLER_LOG_PATH=/tmp/anvaya-wrangler.log WRANGLER_SEND_METRICS=false wrangler deploy --dry-run --outdir dist",
+    "db:migrate": "XDG_CONFIG_HOME=/tmp/anvaya-config WRANGLER_LOG_PATH=/tmp/anvaya-wrangler.log WRANGLER_SEND_METRICS=false wrangler d1 migrations apply anvaya-local --local",
+    "db:seed": "XDG_CONFIG_HOME=/tmp/anvaya-config WRANGLER_LOG_PATH=/tmp/anvaya-wrangler.log WRANGLER_SEND_METRICS=false wrangler d1 execute anvaya-local --local --file seeds/local.sql"
+  },
+  "dependencies": {
+    "hono": "^4.10.0",
+    "zod": "^4.1.0",
+    "jose": "^6.1.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.45.0",
+    "@cloudflare/workers-types": "^4.20251014.0"
+  }
+}
