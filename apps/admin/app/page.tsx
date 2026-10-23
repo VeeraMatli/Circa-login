@@ -140,7 +140,7 @@ export default function Dashboard() {
     <div className="shell">
       <aside className={menu ? "sidebar mobile-open" : "sidebar"}>
         <a className="wordmark" href="/">
-          zyra<span>♡</span>
+          HeartTrail<span>♡</span>
         </a>
         <div className="workspace-tag">OPERATIONS STUDIO</div>
         <nav aria-label="Main navigation">
@@ -171,9 +171,9 @@ export default function Dashboard() {
             <span>Care begins with privacy</span>
           </div>
           <div className="operator">
-            <div className="avatar">ZO</div>
+            <div className="avatar">HT</div>
             <div>
-              <strong>Zyra operations</strong>
+              <strong>HeartTrail operations</strong>
               <small>{mode || "Authenticated workspace"}</small>
             </div>
           </div>
@@ -212,13 +212,13 @@ export default function Dashboard() {
             >
               <Bell size={18} />
             </button>
-            <div className="avatar mini">ZO</div>
+            <div className="avatar mini">HT</div>
           </div>
         </header>
         <main id="main">
           <div className="page-heading">
             <div>
-              <div className="eyebrow">FEEL THE SPARK.</div>
+              <div className="eyebrow">FOLLOW YOUR HEART.</div>
               <h1>{tab === "overview" ? "A thoughtful overview." : title}</h1>
               <p>
                 {tab === "overview"
@@ -289,7 +289,7 @@ export default function Dashboard() {
                   <div className="heart-orb">♡</div>
                   <span className="little-star">✧</span>
                   <span className="little-star second">✦</span>
-                  <div className="art-caption">Feel the Spark.</div>
+                  <div className="art-caption">Follow Your Heart.</div>
                 </div>
               </section>
               <section className="metrics" aria-label="Platform metrics">
@@ -563,7 +563,7 @@ export default function Dashboard() {
                   <p>
                     {query
                       ? "Try a different search."
-                      : "Records will appear as your community uses Zyra."}
+                      : "Records will appear as your community uses HeartTrail."}
                   </p>
                 </div>
               )}
@@ -571,7 +571,8 @@ export default function Dashboard() {
           )}
           <footer className="page-footer">
             <span>
-              ZYRA <span className="footer-dot">·</span> Feel the Spark.
+              HEARTTRAIL <span className="footer-dot">·</span> Follow Your
+              Heart.
             </span>
             <span>
               <LockKeyhole size={12} /> Restricted operations workspace
