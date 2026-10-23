@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Anvaya API",
+    "title": "Zyra API",
     "version": "0.1.0",
     "description": "Adults-only dating API. Local mock adapters are never production verification. See docs/release/readiness.md for release gates."
   },

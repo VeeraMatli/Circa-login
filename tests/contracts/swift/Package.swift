@@ -2,9 +2,9 @@
 import PackageDescription
 
 let package = Package(
-  name: "AnvayaContracts",
-  products: [.library(name: "AnvayaContracts", targets: ["AnvayaContracts"])],
+  name: "ZyraContracts",
+  products: [.library(name: "ZyraContracts", targets: ["ZyraContracts"])],
   targets: [
-    .target(name: "AnvayaContracts"),
-    .testTarget(name: "AnvayaContractsTests", dependencies: ["AnvayaContracts"]),
+    .target(name: "ZyraContracts"),
+    .testTarget(name: "ZyraContractsTests", dependencies: ["ZyraContracts"]),
   ])

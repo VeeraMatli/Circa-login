@@ -148,7 +148,7 @@ for (const kind of ["email", "phone"] as const) {
           body: JSON.stringify({
             from: required(c.env.EMAIL_FROM, "Email sender"),
             to: subject,
-            subject: "Your Anvaya verification code",
+            subject: "Your Zyra verification code",
             text: `Your code is ${code}. It expires in 5 minutes. Never share it.`,
           }),
         });
@@ -164,7 +164,7 @@ for (const kind of ["email", "phone"] as const) {
             body: new URLSearchParams({
               From: required(c.env.SMS_FROM, "SMS sender"),
               To: subject,
-              Body: `Anvaya code: ${code}. Expires in 5 minutes.`,
+              Body: `Zyra code: ${code}. Expires in 5 minutes.`,
             }).toString(),
           },
         );

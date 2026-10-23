@@ -1,8 +1,10 @@
 @import "tailwindcss";
 :root {
-  --plum: #24162e;
-  --rose: #a96383;
-  --gold: #e5b988;
+  --plum: #1d102b;
+  --purple: #ac45df;
+  --pink: #ff4f98;
+  --rose: #b52f75;
+  --gold: #ffce7a;
   --paper: #faf9f6;
   --ink: #302a35;
   --muted: #817b86;
@@ -37,7 +39,7 @@ button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid #a96383;
+  outline: 3px solid var(--purple);
   outline-offset: 4px;
 }
 button {
@@ -68,7 +70,8 @@ a {
   z-index: 30;
 }
 .wordmark {
-  font-family: Georgia, serif;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
   font-size: 42px;
   letter-spacing: -2px;
   padding-left: 18px;
@@ -76,7 +79,7 @@ a {
 }
 .wordmark span {
   font-size: 29px;
-  color: #ae7290;
+  color: var(--pink);
   margin-left: 2px;
 }
 .workspace-tag {
@@ -104,8 +107,8 @@ nav {
   font-size: 13px;
 }
 .nav-item.active {
-  background: #f4edf2;
-  color: #75445f;
+  background: #f4e8fc;
+  color: #74239a;
   font-weight: 600;
 }
 .nav-count {
@@ -275,9 +278,9 @@ h1 {
   justify-content: space-between;
   background: radial-gradient(
     ellipse at 85% 90%,
-    #60445a 0%,
-    #3b2745 35%,
-    #25192f 75%
+    #632879 0%,
+    #55205e 35%,
+    var(--plum) 75%
   );
   border-radius: 12px;
   color: #fff;
@@ -311,7 +314,7 @@ h1 {
   margin: 0 0 21px;
 }
 .cream-button {
-  background: #f2d6bf;
+  background: var(--gold);
   color: #574151;
   border: 0;
   font-size: 10px;
@@ -380,7 +383,7 @@ h1 {
   font-size: 12px;
   font-style: italic;
   line-height: 1.5;
-  color: #c7aebc;
+  color: var(--gold);
 }
 .metrics {
   display: grid;
@@ -1089,4 +1092,14 @@ h1 {
 .care-banner p,
 .panel-heading p {
   font-size: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -1,0 +1,89 @@
+{
+  "identifier": "ZyraLocalOnly",
+  "nonRenewingSubscriptions": [],
+  "products": [],
+  "settings": {
+    "_applicationInternalID": "",
+    "_developerTeamID": "",
+    "_failTransactionsEnabled": false,
+    "_locale": "en_US",
+    "_storefront": "USA",
+    "_storeKitErrors": []
+  },
+  "subscriptionGroups": [
+    {
+      "id": "9000000009",
+      "localizations": [],
+      "name": "Zyra local memberships",
+      "subscriptions": [
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "9.99",
+          "familyShareable": false,
+          "groupNumber": 3,
+          "internalID": "9000000000",
+          "introductoryOffer": null,
+          "localizations": [
+            {
+              "description": "Local testing of Zyra Plus; not a production entitlement.",
+              "displayName": "Zyra Plus",
+              "locale": "en_US"
+            }
+          ],
+          "productID": "com.anvaya.plus.monthly",
+          "recurringSubscriptionPeriod": "P1M",
+          "referenceName": "Zyra Plus monthly",
+          "subscriptionGroupID": "9000000009",
+          "type": "RecurringSubscription"
+        },
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "19.99",
+          "familyShareable": false,
+          "groupNumber": 2,
+          "internalID": "9000000001",
+          "introductoryOffer": null,
+          "localizations": [
+            {
+              "description": "Local testing of Zyra Gold; not a production entitlement.",
+              "displayName": "Zyra Gold",
+              "locale": "en_US"
+            }
+          ],
+          "productID": "com.anvaya.gold.monthly",
+          "recurringSubscriptionPeriod": "P1M",
+          "referenceName": "Zyra Gold monthly",
+          "subscriptionGroupID": "9000000009",
+          "type": "RecurringSubscription"
+        },
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "29.99",
+          "familyShareable": false,
+          "groupNumber": 1,
+          "internalID": "9000000002",
+          "introductoryOffer": null,
+          "localizations": [
+            {
+              "description": "Local testing of Zyra Elite; not a production entitlement.",
+              "displayName": "Zyra Elite",
+              "locale": "en_US"
+            }
+          ],
+          "productID": "com.anvaya.elite.monthly",
+          "recurringSubscriptionPeriod": "P1M",
+          "referenceName": "Zyra Elite monthly",
+          "subscriptionGroupID": "9000000009",
+          "type": "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version": {
+    "major": 3,
+    "minor": 0
+  }
+}

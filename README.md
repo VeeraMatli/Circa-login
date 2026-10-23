@@ -1,8 +1,14 @@
-# Anvaya
+# Zyra
 
-**Where meaningful connections begin.** Adults-only dating software built with SwiftUI, Cloudflare Workers/D1/R2/Durable Objects/Queues, and a Next.js operations portal.
+**Feel the Spark.** Adults-only dating software built with SwiftUI, Cloudflare Workers/D1/R2/Durable Objects/Queues, and a Next.js operations portal.
 
 This repository began as an empty README. It now contains a runnable local API/admin implementation and native iOS source with a generated Xcode project. It is **not production-ready or feature-complete**. Read the [release-readiness ledger](docs/release/readiness.md) for precisely implemented, mocked, untested and unfinished features.
+
+## Zyra identity
+
+**Feel the Spark.** A simple white Z and outlined heart sit on midnight plum. The palette pairs electric purple `#AC45DF`, hot pink `#FF4F98`, midnight plum `#1D102B`, and champagne `#FFCE7A`. The native app uses a dark appearance with champagne actions and purple/pink accents. Successful swipes animate away as the next profile appears; reciprocal matches reveal two hearts and a champagne sparkle. Reduce Motion uses a simple card fade and a static match illustration.
+
+Open `apps/ios/Zyra.xcodeproj` and select the **Zyra** scheme. Source folders, native targets, tests and CI use Zyra. Existing `com.anvaya.*` bundle/purchase/keychain identifiers, message-cache directories, `@anvaya` npm workspaces and Cloudflare resource names remain compatible with previous configuration. Both `zyra://` and legacy `anvaya://` native links work.
 
 ## Local development
 
@@ -38,12 +44,12 @@ For browser tests set CHROMIUM_PATH to an installed browser if `/usr/bin/chromiu
 
 ```sh
 python3 scripts/generate-xcode.py
-open apps/ios/Anvaya.xcodeproj
-xcodebuild test -project apps/ios/Anvaya.xcodeproj -scheme Anvaya \
+open apps/ios/Zyra.xcodeproj
+xcodebuild test -project apps/ios/Zyra.xcodeproj -scheme Zyra \
   -destination 'platform=iOS Simulator,name=iPhone 16' CODE_SIGNING_ALLOWED=NO
 ```
 
-Choose an available simulator if that model is absent. Debug API_BASE_URL defaults to loopback for a Mac-hosted API. The cloud Worker is on another machine: run the API locally on the Mac, or configure an approved authenticated HTTPS staging endpoint. Do not expose cloud mocks to the Internet. Configure Release API_BASE_URL, ANVAYA_BUNDLE_ID and DEVELOPMENT_TEAM through build settings; the default production URL is deliberately nonfunctional. Real Apple login, notifications and purchases require capabilities/provisioning and provider setup. Native source compilation requires macOS and is not claimed by Linux syntax checks.
+Choose an available simulator if that model is absent. Debug API_BASE_URL defaults to loopback for a Mac-hosted API. The cloud Worker is on another machine: run the API locally on the Mac, or configure an approved authenticated HTTPS staging endpoint. Do not expose cloud mocks to the Internet. Configure Release API_BASE_URL, ZYRA_BUNDLE_ID and DEVELOPMENT_TEAM through build settings; the default production URL is deliberately nonfunctional. Real Apple login, notifications and purchases require capabilities/provisioning and provider setup. Native source compilation requires macOS and is not claimed by Linux syntax checks.
 
 If the simulator cannot connect to the server, run these commands from the repository root **on the same Mac as Xcode**:
 
@@ -57,10 +63,10 @@ In a second Mac terminal, `curl --fail http://127.0.0.1:8787/health` should succ
 ## Project map
 
 ```text
-apps/ios/Anvaya.xcodeproj       iOS 17+, Swift 6 project + shared scheme
-apps/ios/Anvaya/                native App/Core/Features/Resources
-apps/ios/AnvayaTests/           Swift Testing contract/navigation tests
-apps/ios/AnvayaUITests/         XCTest UI registration test
+apps/ios/Zyra.xcodeproj       iOS 17+, Swift 6 project + shared scheme
+apps/ios/Zyra/                native App/Core/Features/Resources
+apps/ios/ZyraTests/           Swift Testing contract/navigation tests
+apps/ios/ZyraUITests/         XCTest UI registration test
 apps/admin/                    Next.js, Tailwind, Radix admin + browser tests
 services/api/src/              Hono routes, authorization, repositories, DO, queue/scheduler
 services/api/migrations/       forward-only D1 SQL; synthetic reference seeds are separate
