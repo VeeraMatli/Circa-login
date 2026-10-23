@@ -169,7 +169,7 @@ safety.post("/me/data-export", async (c) => {
   return c.json(
     { data: { export_id: exportId, profile, messages, photos, preferences } },
     200,
-    { "Content-Disposition": 'attachment; filename="circa-export.json"' },
+    { "Content-Disposition": 'attachment; filename="anvaya-export.json"' },
   );
 });
 safety.delete("/me", async (c) => {

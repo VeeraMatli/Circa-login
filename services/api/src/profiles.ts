@@ -174,7 +174,7 @@ profiles.patch("/me", async (c) => {
     throw new APIError(
       403,
       "ADULTS_ONLY",
-      "Circa is only for adults aged 18 and over.",
+      "Anvaya is only for adults aged 18 and over.",
     );
   const previous = await new D1Profiles(c.env.DB).find(userId);
   if (previous?.date_of_birth && previous.date_of_birth !== d.date_of_birth)

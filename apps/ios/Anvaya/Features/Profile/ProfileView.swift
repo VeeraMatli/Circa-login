@@ -48,7 +48,7 @@ struct ProfileView: View {
       }
       Section("Make it yours") {
         NavigationLink("Privacy & notifications") { PrivacySettings() }
-        NavigationLink("Circa membership", value: AppCoordinator.Route.premium)
+        NavigationLink("Anvaya membership", value: AppCoordinator.Route.premium)
         NavigationLink("Safe Dating Center", value: AppCoordinator.Route.safety)
         Button("Enable notifications") {
           Task {
@@ -150,7 +150,7 @@ struct ProfileView: View {
       struct Export: Decodable, Sendable { let data: JSONValue }
       let result: Export = try await app.api.request(
         "/v1/me/data-export", method: "POST", body: Data("{}".utf8))
-      let file = FileManager.default.temporaryDirectory.appendingPathComponent("circa-export.json")
+      let file = FileManager.default.temporaryDirectory.appendingPathComponent("anvaya-export.json")
       try JSONEncoder().encode(result.data).write(
         to: file, options: [.atomic, .completeFileProtection])
       exportURL = file

@@ -1,5 +1,5 @@
 {
-  "identifier": "CircaLocalOnly",
+  "identifier": "AnvayaLocalOnly",
   "nonRenewingSubscriptions": [],
   "products": [],
   "settings": {
@@ -14,7 +14,7 @@
     {
       "id": "9000000009",
       "localizations": [],
-      "name": "Circa local memberships",
+      "name": "Anvaya local memberships",
       "subscriptions": [
         {
           "adHocOffers": [],
@@ -26,14 +26,14 @@
           "introductoryOffer": null,
           "localizations": [
             {
-              "description": "Local testing of Circa Plus; not a production entitlement.",
-              "displayName": "Circa Plus",
+              "description": "Local testing of Anvaya Plus; not a production entitlement.",
+              "displayName": "Anvaya Plus",
               "locale": "en_US"
             }
           ],
           "productID": "com.anvaya.plus.monthly",
           "recurringSubscriptionPeriod": "P1M",
-          "referenceName": "Circa Plus monthly",
+          "referenceName": "Anvaya Plus monthly",
           "subscriptionGroupID": "9000000009",
           "type": "RecurringSubscription"
         },
@@ -47,14 +47,14 @@
           "introductoryOffer": null,
           "localizations": [
             {
-              "description": "Local testing of Circa Gold; not a production entitlement.",
-              "displayName": "Circa Gold",
+              "description": "Local testing of Anvaya Gold; not a production entitlement.",
+              "displayName": "Anvaya Gold",
               "locale": "en_US"
             }
           ],
           "productID": "com.anvaya.gold.monthly",
           "recurringSubscriptionPeriod": "P1M",
-          "referenceName": "Circa Gold monthly",
+          "referenceName": "Anvaya Gold monthly",
           "subscriptionGroupID": "9000000009",
           "type": "RecurringSubscription"
         },
@@ -68,14 +68,14 @@
           "introductoryOffer": null,
           "localizations": [
             {
-              "description": "Local testing of Circa Elite; not a production entitlement.",
-              "displayName": "Circa Elite",
+              "description": "Local testing of Anvaya Elite; not a production entitlement.",
+              "displayName": "Anvaya Elite",
               "locale": "en_US"
             }
           ],
           "productID": "com.anvaya.elite.monthly",
           "recurringSubscriptionPeriod": "P1M",
-          "referenceName": "Circa Elite monthly",
+          "referenceName": "Anvaya Elite monthly",
           "subscriptionGroupID": "9000000009",
           "type": "RecurringSubscription"
         }

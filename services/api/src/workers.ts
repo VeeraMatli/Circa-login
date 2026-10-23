@@ -110,7 +110,7 @@ async function notify(env: Env, d: Record<string, unknown>) {
             body: JSON.stringify({
               aps: {
                 alert: {
-                  title: "Circa",
+                  title: "Anvaya",
                   body:
                     d.event_kind === "match"
                       ? "A new connection is waiting."

@@ -2,7 +2,7 @@
 
 Proposed name: Anvaya. Subtitle: Find your kind of connection. Promotional text: A little common ground. A meaningful beginning. Meet adults who share your intentions, interests and a thoughtful approach to dating.
 
-Description draft: Circa brings shared intentions into focus. Connection Compass explains common interests and preferences, Conversation Spark offers curated ways to say hello, and the Safe Dating Center keeps privacy and respect close at hand. Discover mutually eligible adults, choose to connect, and chat only after a mutual match. Essential reporting, blocking and safety controls remain free. Optional membership offers additional discovery tools. Product availability depends on the released configuration. No claim of scientifically validated compatibility or guaranteed outcomes.
+Description draft: Anvaya brings shared intentions into focus. Connection Compass explains common interests and preferences, Conversation Spark offers curated ways to say hello, and the Safe Dating Center keeps privacy and respect close at hand. Discover mutually eligible adults, choose to connect, and chat only after a mutual match. Essential reporting, blocking and safety controls remain free. Optional membership offers additional discovery tools. Product availability depends on the released configuration. No claim of scientifically validated compatibility or guaranteed outcomes.
 
 Keyword draft: dating,relationships,connections,compatibility,interests,chat. Review keyword length, trademark rights and localizations before upload.
 

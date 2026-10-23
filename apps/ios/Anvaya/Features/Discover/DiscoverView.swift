@@ -65,7 +65,7 @@ struct DiscoverView: View {
   var body: some View {
     VStack(spacing: 15) {
       HStack {
-        Text("circa ✧").font(.system(.title, design: .serif)).foregroundStyle(Color.roseMauve)
+        Text("anvaya ✧").font(.system(.title, design: .serif)).foregroundStyle(Color.roseMauve)
         Spacer()
         NavigationLink(value: AppCoordinator.Route.safety) {
           Image(systemName: "shield.lefthalf.filled").accessibilityLabel("Safe Dating Center")

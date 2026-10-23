@@ -1,14 +1,8 @@
-# Circa
+# Anvaya
 
 **Where meaningful connections begin.** Adults-only dating software built with SwiftUI, Cloudflare Workers/D1/R2/Durable Objects/Queues, and a Next.js operations portal.
 
 This repository began as an empty README. It now contains a runnable local API/admin implementation and native iOS source with a generated Xcode project. It is **not production-ready or feature-complete**. Read the [release-readiness ledger](docs/release/readiness.md) for precisely implemented, mocked, untested and unfinished features.
-
-## Brand identity
-
-Circa keeps the midnight-plum, rose-mauve and champagne-gold palette. Its open circular “c” and four-point sparkle evolve the original monogram. The tagline remains **Where meaningful connections begin.**
-
-The established `com.anvaya.*` identifiers, `@anvaya` workspaces and `Anvaya.xcodeproj` are technical compatibility names. Product names, login messages, notifications, exports and membership display names use Circa. Both `circa://` and the legacy link scheme resolve to the same native routes.
 
 ## Local development
 
