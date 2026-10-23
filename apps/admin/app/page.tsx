@@ -140,7 +140,7 @@ export default function Dashboard() {
     <div className="shell">
       <aside className={menu ? "sidebar mobile-open" : "sidebar"}>
         <a className="wordmark" href="/">
-          anvaya<span>✧</span>
+          circa<span>✧</span>
         </a>
         <div className="workspace-tag">OPERATIONS STUDIO</div>
         <nav aria-label="Main navigation">
@@ -173,7 +173,7 @@ export default function Dashboard() {
           <div className="operator">
             <div className="avatar">AO</div>
             <div>
-              <strong>Anvaya operations</strong>
+              <strong>Circa operations</strong>
               <small>{mode || "Authenticated workspace"}</small>
             </div>
           </div>
@@ -569,7 +569,7 @@ export default function Dashboard() {
                   <p>
                     {query
                       ? "Try a different search."
-                      : "Records will appear as your community uses Anvaya."}
+                      : "Records will appear as your community uses Circa."}
                   </p>
                 </div>
               )}
@@ -577,7 +577,7 @@ export default function Dashboard() {
           )}
           <footer className="page-footer">
             <span>
-              ANVAYA <span className="footer-dot">·</span> Made for meaningful
+              CIRCA <span className="footer-dot">·</span> Made for meaningful
               connections.
             </span>
             <span>

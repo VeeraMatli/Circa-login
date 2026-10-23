@@ -1,4 +1,4 @@
-# Anvaya engineering
+# Circa engineering
 
 Use the current checkout. Cloud tasks are already isolated; do not create worktrees unless requested.
 Read README.md and docs/release/readiness.md before changing release gates.

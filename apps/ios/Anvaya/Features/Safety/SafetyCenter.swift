@@ -21,7 +21,7 @@ struct SafetyCenter: View {
           "Use Report or Block from a profile or conversation. Reports create a case for human review. If there is immediate danger, contact your local emergency services."
         )
         Text(
-          "Anvaya does not offer end-to-end encrypted messaging. Access to reported evidence is restricted and audited."
+          "Circa does not offer end-to-end encrypted messaging. Access to reported evidence is restricted and audited."
         )
       }
       Section("Privacy") {

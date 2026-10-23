@@ -20,7 +20,7 @@ struct BrandHeader: View {
   var subtitle: String
   var body: some View {
     VStack(alignment: .leading, spacing: 10) {
-      Text("anvaya ✧").font(.system(.title, design: .serif)).foregroundStyle(Color.roseMauve)
+      Text("circa ✧").font(.system(.title, design: .serif)).foregroundStyle(Color.roseMauve)
       Text(title).font(.system(.largeTitle, design: .serif))
       Text(subtitle).font(.subheadline).foregroundStyle(.secondary)
     }.frame(maxWidth: .infinity, alignment: .leading).padding(.vertical)

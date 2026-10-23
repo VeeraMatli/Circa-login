@@ -20,7 +20,7 @@ struct AnvayaApp: App {
             "Configuration required", systemImage: "gear.badge.exclamationmark",
             description: Text(configurationError))
         } else {
-          ProgressView("Preparing Anvaya…").task {
+          ProgressView("Preparing Circa…").task {
             guard let value = Bundle.main.object(forInfoDictionaryKey: "API_BASE_URL") as? String,
               let url = URL(string: value), ["https", "http"].contains(url.scheme ?? "")
             else {
@@ -110,7 +110,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
     _ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse
   ) async {
     guard let value = response.notification.request.content.userInfo["conversation_id"] as? String,
-      UUID(uuidString: value) != nil, let url = URL(string: "anvaya://conversation/\(value)")
+      UUID(uuidString: value) != nil, let url = URL(string: "circa://conversation/\(value)")
     else { return }
     await MainActor.run { UIApplication.shared.open(url) }
   }

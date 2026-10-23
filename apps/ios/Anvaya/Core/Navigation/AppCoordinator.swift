@@ -11,7 +11,7 @@ import SwiftUI
   var discoveryMode = "nearby"
   var path: [Route] = []
   func handle(_ url: URL) {
-    guard url.scheme == "anvaya" else { return }
+    guard ["circa", "anvaya"].contains(url.scheme ?? "") else { return }
     if url.host == "conversation", let id = url.pathComponents.last, UUID(uuidString: id) != nil {
       selectedTab = .matches
       path = [.conversation(id)]

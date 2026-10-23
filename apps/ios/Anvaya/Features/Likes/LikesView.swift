@@ -27,7 +27,7 @@ struct LikesView: View {
             Text(
               "Gold lets you see who’s interested. You can also discover and match with people for free."
             ).foregroundStyle(.secondary)
-            NavigationLink("Explore Anvaya Gold", value: AppCoordinator.Route.premium).buttonStyle(
+            NavigationLink("Explore Circa Gold", value: AppCoordinator.Route.premium).buttonStyle(
               AnvayaButtonStyle())
           } else {
             ForEach(result.data) { person in

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 export const metadata: Metadata = {
-  title: "Anvaya · Operations",
+  title: "Circa · Operations",
   description: "A considered space for safer connections.",
 };
 export default function RootLayout({
