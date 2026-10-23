@@ -31,4 +31,45 @@ struct AnvayaTests {
     let restored = try JSONDecoder().decode(SessionTokens.self, from: JSONEncoder().encode(tokens))
     #expect(restored.refreshToken == tokens.refreshToken)
   }
+  @Test func signupSurfacesProviderFailure() async throws {
+    let client = APIClient(
+      baseURL: URL(string: "https://example.invalid")!, transport: FailingSignupTransport())
+    do {
+      let _: Envelope<Challenge> = try await client.request(
+        "/v1/auth/email/start", method: "POST", body: Data("{}".utf8))
+      Issue.record("Expected the provider error to reach the signup screen")
+    } catch let problem as APIProblem {
+      #expect(problem.code == "PROVIDER_NOT_CONFIGURED")
+      #expect(problem.localizedDescription == "Email is not configured.")
+    }
+  }
+  @Test func signupSurfacesOfflineFailure() async throws {
+    let client = APIClient(
+      baseURL: URL(string: "https://example.invalid")!, transport: OfflineSignupTransport())
+    do {
+      let _: Envelope<Challenge> = try await client.request("/v1/auth/email/start", method: "POST")
+      Issue.record("Expected the connection error to reach the signup screen")
+    } catch let problem as APIProblem {
+      #expect(problem.code == "OFFLINE")
+      #expect(problem.localizedDescription.contains("Check your connection"))
+    }
+  }
+}
+
+private struct FailingSignupTransport: HTTPTransport {
+  func response(for request: URLRequest) async throws -> (Data, URLResponse) {
+    let response = HTTPURLResponse(
+      url: request.url!, statusCode: 503, httpVersion: nil, headerFields: nil)!
+    return (
+      Data(
+        #"{"error":{"code":"PROVIDER_NOT_CONFIGURED","message":"Email is not configured."}}"#.utf8),
+      response
+    )
+  }
+}
+
+private struct OfflineSignupTransport: HTTPTransport {
+  func response(for request: URLRequest) async throws -> (Data, URLResponse) {
+    throw URLError(.notConnectedToInternet)
+  }
 }

@@ -39,4 +39,21 @@ struct ContractsTests {
     _ = try JSONDecoder().decode(
       Envelope<Acknowledgement>.self, from: Data(#"{"data":{"saved":true}}"#.utf8))
   }
+  @Test func signupNormalizesEmailAndPhone() throws {
+    #expect(
+      try AuthenticationMethod.email.normalizedDestination("  Tester@Example.com\n")
+        == "tester@example.com")
+    #expect(
+      try AuthenticationMethod.phone.normalizedDestination(" +1 (415) 555-2671 ") == "+14155552671")
+  }
+  @Test(arguments: ["", "   ", "missing-at", "a@@example.com", "a@example", "a b@example.com"])
+  func signupRejectsInvalidEmails(input: String) {
+    #expect(throws: APIProblem.self) { try AuthenticationMethod.email.normalizedDestination(input) }
+  }
+  @Test(arguments: [
+    "", "tester@example.com", "4155552671", "+012345678", "+123", "+1234567890123456",
+  ])
+  func signupRejectsInvalidPhones(input: String) {
+    #expect(throws: APIProblem.self) { try AuthenticationMethod.phone.normalizedDestination(input) }
+  }
 }

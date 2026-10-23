@@ -45,6 +45,15 @@ xcodebuild test -project apps/ios/Anvaya.xcodeproj -scheme Anvaya \
 
 Choose an available simulator if that model is absent. Debug API_BASE_URL defaults to loopback for a Mac-hosted API. The cloud Worker is on another machine: run the API locally on the Mac, or configure an approved authenticated HTTPS staging endpoint. Do not expose cloud mocks to the Internet. Configure Release API_BASE_URL, ANVAYA_BUNDLE_ID and DEVELOPMENT_TEAM through build settings; the default production URL is deliberately nonfunctional. Real Apple login, notifications and purchases require capabilities/provisioning and provider setup. Native source compilation requires macOS and is not claimed by Linux syntax checks.
 
+If the simulator cannot connect to the server, run these commands from the repository root **on the same Mac as Xcode**:
+
+```sh
+npm run setup
+npm run dev                 # keep this terminal running
+```
+
+In a second Mac terminal, `curl --fail http://127.0.0.1:8787/health` should succeed. Run the app using the **Debug** configuration and retry signup. Starting the API in the Codex cloud terminal does not start it on your Mac. Local signup displays a labeled mock verification code; it does not deliver email or SMS. Real delivery requires a deployed API and configured providers.
+
 ## Project map
 
 ```text

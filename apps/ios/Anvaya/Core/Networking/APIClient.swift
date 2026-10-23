@@ -51,7 +51,32 @@ actor APIClient {
       request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
     }
     if let key = idempotencyKey { request.setValue(key, forHTTPHeaderField: "Idempotency-Key") }
-    let (data, response) = try await transport.response(for: request)
+    let data: Data
+    let response: URLResponse
+    do {
+      (data, response) = try await transport.response(for: request)
+    } catch let failure as URLError {
+      switch failure.code {
+      case .notConnectedToInternet:
+        throw APIProblem(
+          code: "OFFLINE", message: "You’re offline. Check your connection and try again.")
+      case .timedOut:
+        throw APIProblem(
+          code: "TIMEOUT", message: "The service took too long to respond. Please try again.")
+      default:
+        #if DEBUG
+          if ["127.0.0.1", "localhost", "::1"].contains(baseURL.host ?? "") {
+            throw APIProblem(
+              code: "LOCAL_SERVER",
+              message:
+                "Cannot reach the local test server. Start the API on the Mac running the simulator, then try again."
+            )
+          }
+        #endif
+        throw APIProblem(
+          code: "CONNECTION", message: "We couldn’t reach the service. Please try again shortly.")
+      }
+    }
     guard let http = response as? HTTPURLResponse else {
       throw APIProblem(code: "RESPONSE", message: "The service returned an invalid response.")
     }
@@ -65,9 +90,15 @@ actor APIClient {
         throw APIProblem(code: problem.error.code, message: problem.error.message)
       }
       throw APIProblem(
-        code: "HTTP_\(http.statusCode)", message: "Unable to connect. Please try again.")
+        code: "HTTP_\(http.statusCode)",
+        message: "The service couldn’t complete your request. Please try again shortly.")
     }
-    return try JSONDecoder().decode(T.self, from: data)
+    do {
+      return try JSONDecoder().decode(T.self, from: data)
+    } catch {
+      throw APIProblem(
+        code: "RESPONSE", message: "The service returned an unexpected response. Please try again.")
+    }
   }
   private func rotate() async throws {
     if let refreshTask {
